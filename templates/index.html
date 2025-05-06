@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sääsovellus</title>
+</head>
+<body>
+    <h1>Syötä kaupunki</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Esim. Helsinki" required>
+        <button type="submit">Hae sää</button>
+    </form>
+
+    {% if weather %}
+        {% if weather.error %}
+            <p>{{ weather.error }}</p>
+        {% else %}
+            <h2>{{ weather.kaupunki }}</h2>
+            <p>Lämpötila: {{ weather.lämpötila }} °C</p>
+            <p>Kuvaus: {{ weather.kuvaus }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ weather.ikoni }}@2x.png">
+        {% endif %}
+    {% endif %}
+</body>
+</html>
